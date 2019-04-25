@@ -1,6 +1,7 @@
 #include "init.hpp"
 
 void init(BusStation *busStation, SchoolBus *schoolBus) {
+    system("color 0E");
     for(int i=0; i<BUSNUMBER; i++)
       schoolBus[i].setId(i);
 
