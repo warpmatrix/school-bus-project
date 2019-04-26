@@ -29,12 +29,14 @@ int BusStation::getWait() const {
 }
 
 void BusStation::printInfo(SchoolBus *schoolBus) const {
-    std::cout << "The number of waiting passenger: " << waitingPass << '\n' << '\n';
-    int count = 0;
-    for(int i=0; i<=BUSNUMBER; i++) {
-        if(schoolBus[i].getLocation()==id && schoolBus[i].getIsRunning()==true) {
-            count++;
-        }
-    }
-    std::cout << "There are " << count << "buses on the way" << '\n';
+    std::cout << "The number of waiting passenger: " << waitingPass << '\n';
+    int countComingBus = 0;
+    int countWaitingBus = 0;
+    for(int i=0; i<=BUSNUMBER; i++)
+      if(schoolBus[i].getLocation()==id)
+        if(schoolBus[i].getIsRunning()==true)
+          countComingBus++;
+        else countWaitingBus++;
+    std::cout << countWaitingBus << " buses is on the station." << '\n';
+    std::cout << "There are " << countComingBus << " buses on the way." << '\n' << '\n';
 }

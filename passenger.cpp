@@ -13,6 +13,7 @@ void queryMode(BusStation *busStation, SchoolBus *schoolBus) {
         if(input == '1')
             inquireRoutes(busStation, schoolBus);
         else {
+            inquireBuses(busStation, schoolBus);
         }
     }
 }
@@ -37,6 +38,17 @@ void inquireStations(int line, BusStation *busStation, SchoolBus *schoolBus) {
         int routeLength = getRouteLength(line, busStation);
         char input = legalInput(0, routeLength);
         if(input == '0') break;
-        busStation[input-'0'].printInfo(schoolBus);
+        busStation[input-'0'-1].printInfo(schoolBus);
+    }
+}
+
+void inquireBuses(BusStation *busStation, SchoolBus *schoolBus) {
+    while (1) {
+        std::cout << "Plz enter the school bus's id(1~"
+        << BUSNUMBER << "), for more information." << '\n';
+        std::cout << "Press 0 to go back." << '\n';
+        int input = legalInput(0, BUSNUMBER);
+        if(input == '0') break;
+        schoolBus[input-'0'-1].printInfo(busStation);
     }
 }
