@@ -2,7 +2,7 @@
 
 void init(BusStation *busStation, SchoolBus *schoolBus) {
     system("color 0E");
-    
+
     for(int i=0; i<BUSNUMBER; i++)
       schoolBus[i].setId(i);
 
@@ -58,4 +58,26 @@ int getRouteLength(int line, BusStation *busStation) {
     for(int p=0; p!=-1; p=busStation[p].getNext(line) )
         length++;
     return length;
+}
+bool signIn() {
+    std::string password="abc";
+    std::cout << "Account: ";
+    std::string account;
+    std::cin >> account;
+    std::cout << "Password: ";
+    std::string userPassword;
+    char ch;
+    while ( (ch=getch()) != '\r') {
+        int length = userPassword.length();
+        if(ch=='\b' && length>0) {
+            std::cout << "\b \b";
+            userPassword = userPassword.substr(0, length-1);
+        }
+        else if(ch != '\b'){
+            userPassword += ch;
+            std::cout << "*";
+        }
+    }
+    std::cout << '\n';
+    return !userPassword.compare(0, userPassword.length(), password);
 }
