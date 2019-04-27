@@ -52,3 +52,29 @@ void inquireBuses(BusStation *busStation, SchoolBus *schoolBus) {
         schoolBus[input-'0'-1].printInfo(busStation);
     }
 }
+
+std::string getRoute(int line, int head, BusStation *busStation) {
+    std::string str;
+    for(int p=head; p!=-1; p=busStation[p].getNext(line) )
+      if(p==head) str += busStation[p].getName();
+      else str += "<->" + busStation[p].getName();
+    return str;
+}
+
+std::string getStationNum(int line, int head, BusStation *busStation) {
+    std::string str;
+    int num = 1;
+    for(int p=head; p!=-1; p=busStation[p].getNext(line) ) {
+        if(num == 1)
+          str += std::to_string(num++) + '.' + busStation[p].getName();
+        else str += "<->" + std::to_string(num++) + '.' + busStation[p].getName();
+    }
+    return str;
+}
+
+int getRouteLength(int line, BusStation *busStation) {
+    int length = 0;
+    for(int p=0; p!=-1; p=busStation[p].getNext(line) )
+        length++;
+    return length;
+}

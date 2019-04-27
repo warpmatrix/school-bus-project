@@ -24,6 +24,7 @@ void init(BusStation *busStation, SchoolBus *schoolBus) {
     busStation[2].setNext(2, 6, busStation);
     busStation[6].setNext(2, 5, busStation);
 }
+
 char legalInput(int min, int max) {
     char input;
     input = getch();
@@ -36,34 +37,13 @@ char legalInput(int min, int max) {
     system("cls");
     return input;
 }
-std::string getRoute(int line, int head, BusStation *busStation) {
-    std::string str;
-    for(int p=head; p!=-1; p=busStation[p].getNext(line) )
-      if(p==head) str += busStation[p].getName();
-      else str += "<->" + busStation[p].getName();
-    return str;
-}
-std::string getStationNum(int line, int head, BusStation *busStation) {
-    std::string str;
-    int num = 1;
-    for(int p=head; p!=-1; p=busStation[p].getNext(line) ) {
-        if(num == 1)
-          str += std::to_string(num++) + '.' + busStation[p].getName();
-        else str += "<->" + std::to_string(num++) + '.' + busStation[p].getName();
-    }
-    return str;
-}
-int getRouteLength(int line, BusStation *busStation) {
-    int length = 0;
-    for(int p=0; p!=-1; p=busStation[p].getNext(line) )
-        length++;
-    return length;
-}
+
 bool signIn() {
+    std::string account="admin";
     std::string password="abc";
     std::cout << "Account: ";
-    std::string account;
-    std::cin >> account;
+    std::string userAccount;
+    std::cin >> userAccount;
     std::cout << "Password: ";
     std::string userPassword;
     char ch;
@@ -79,5 +59,6 @@ bool signIn() {
         }
     }
     std::cout << '\n';
-    return !userPassword.compare(0, userPassword.length(), password);
+    int length = userPassword.length();
+    return !userPassword.compare(0, length, password);
 }

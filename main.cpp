@@ -20,10 +20,11 @@ int main(int argc, char const *argv[]) {
         else {
             if(signIn() ) {
                 std::cout << "Signing in..." << '\n';
+                std::cout << '\n';
                 controllerMode(busStation, schoolBus);
             }
             else {
-                
+
             }
         }
     }
