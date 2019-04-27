@@ -3,5 +3,7 @@
 
 void controllerMode(BusStation *busStation, SchoolBus *schoolBus);
 void setMode(BusStation *busStation, SchoolBus *schoolBus);
+void updateStation(BusStation *busStation);
+void updateBus(SchoolBus *schoolBus);
 
 #endif
