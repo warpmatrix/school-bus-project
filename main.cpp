@@ -18,14 +18,22 @@ int main(int argc, char const *argv[]) {
         if(input == '1')
           queryMode(busStation, schoolBus);
         else {
-            if(signIn() ) {
-                std::cout << "Signing in..." << '\n';
-                std::cout << '\n';
-                controllerMode(busStation, schoolBus);
+            while (1) {
+                if(signIn() ) {
+                    std::cout << "Signing in..." << '\n';
+                    std::cout << '\n';
+                    controllerMode(busStation, schoolBus);
+                }
+                else {
+                    std::cout << '\n' << "Sorry to say that your account or password is wrong." << '\n';
+                    std::cout << "You will return to the main menu if you enter 'Esc'..." << '\n';
+                    std::cout << "Or enter any other key to return to the sign in menu" << '\n';
+                    char input = getch();
+                    system("cls");
+                    if(input == 27) break;
+                }
             }
-            else {
 
-            }
         }
     }
     return 0;
