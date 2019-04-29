@@ -29,7 +29,7 @@ char legalInput(int min, int max) {
     char input;
     input = getch();
     std::cout << '\n';
-    while(!(input>=min+'0' && input<=max+'0') ) {
+    while(!(input>=min+'0'&&input<=max+'0' || input=='\x1B') ) {
         std::cout << "Invalid input! Please re-enter: ";
         input = getch();
         std::cout << '\n';
@@ -61,4 +61,23 @@ bool signIn() {
     std::cout << '\n';
     int length = userPassword.length();
     return !userPassword.compare(0, length, password);
+}
+
+void logInSystem(bool &permission) {
+    while (1) {
+        if(signIn() ) {
+            std::cout << "Signing in..." << '\n';
+            std::cout << '\n';
+            permission = true;
+            return;
+        }
+        else {
+            std::cout << '\n' << "Sorry to say that your account or password is not matched." << '\n';
+            std::cout << "You will return to the main menu if you enter 'Esc'..." << '\n';
+            std::cout << "Or enter any other key to return to the sign in menu" << '\n';
+            char input = getch();
+            system("cls");
+            if(input == '\x1B') break;
+        }
+    }
 }

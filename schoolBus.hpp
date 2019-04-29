@@ -11,7 +11,7 @@ public:
     int getLocation() const;
     // int getEmptySeat() const;
     bool getIsRunning() const;
-    void printInfo(BusStation *busStation) const;
+    void printInfo(const BusStation *busStation) const;
     void setId(int id);
     bool setLine(int line, BusStation *busStation);
     void setEmptySeat(int detNum);

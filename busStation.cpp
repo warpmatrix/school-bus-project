@@ -28,7 +28,7 @@ int BusStation::getWait() const {
     return waitingPass;
 }
 
-void BusStation::printInfo(SchoolBus *schoolBus) const {
+void BusStation::printInfo(const SchoolBus *schoolBus) const {
     std::cout << "The number of waiting passenger: " << waitingPass << '\n';
     int countComingBus = 0;
     int countWaitingBus = 0;

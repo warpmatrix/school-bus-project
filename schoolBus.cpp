@@ -42,7 +42,7 @@ void SchoolBus::setId(int id) {
     this->id = id;
 }
 
-void SchoolBus::printInfo(BusStation *busStation) const {
+void SchoolBus::printInfo(const BusStation *busStation) const {
     std::cout << "The bus you inquire is ";
     if(isRunning) {
         std::cout << "runing to "

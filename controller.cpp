@@ -1,10 +1,12 @@
 #include "controller.hpp"
+#include "busStation.hpp"
+#include "schoolBus.hpp"
 
 void controllerMode(BusStation *busStation, SchoolBus *schoolBus) {
     while (1) {
         std::cout << "*** the information" << '\n';
-        char input = legalInput(0, 2);
-        if(input == '0') break;
+        char input = legalInput(1, 2);
+        if(input == '\x1B') break;
         if(input == '1') queryMode(busStation, schoolBus);
         else setMode(busStation, schoolBus);
     }
@@ -13,8 +15,8 @@ void controllerMode(BusStation *busStation, SchoolBus *schoolBus) {
 void setMode(BusStation *busStation, SchoolBus *schoolBus) {
     while (1) {
         std::cout << "1. Update busStation 2. Update schoolBus" << '\n';
-        char input = legalInput(0,2);
-        if(input == '0') break;
+        char input = legalInput(1, 2);
+        if(input == '\x1B') break;
         if(input == '1') updateStation(busStation);
         else updateBus(schoolBus);
     }
@@ -32,12 +34,12 @@ void updateStation(BusStation *busStation) {
         int passengerArr;
         std::cin >> passengerArr;
 
-        busStation[id].setWait( passengerArr - passengerLef );
+        // busStation[id].setWait( passengerArr - passengerLef );
         std::cout << '\n' << "You will return to the higher menu if you enter 'Esc'..." << '\n';
         std::cout << "Or enter any other key to return to the Update Bus Station menu" << '\n';
         input = getch();
         system("cls");
-        if(input == 27) break;
+        if(input == '\x1B') break;
     }
 }
 
