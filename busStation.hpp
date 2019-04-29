@@ -9,7 +9,7 @@ public:
 
     void setNext(int line, int nextStation, BusStation *busStation);
     void setName(std::string name, int id);
-    void setWait();
+    void updateWait(int detNum);
 
     std::string getName() const;
     int getNext(int line) const;

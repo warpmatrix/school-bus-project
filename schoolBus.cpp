@@ -26,13 +26,13 @@ bool SchoolBus::getIsRunning() const {
 }
 
 bool SchoolBus::setLine(int line, BusStation *busStation) {
-    if(busStation[location].getNext(line) != -1) {
+    if(busStation[location].getNext(line) != -1 && !isRunning) {
         this->line = line;
         return true;
     }
     return false;
 }
-void SchoolBus::setEmptySeat(int detNum) {
+void SchoolBus::updateEmptySeat(int detNum) {
     emptySeat += detNum;
 }
 void SchoolBus::setIsRunning(bool isRunning) {
