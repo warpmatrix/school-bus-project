@@ -4,7 +4,8 @@
 
 void controllerMode(BusStation *busStation, SchoolBus *schoolBus) {
     while (1) {
-        std::cout << "1. Query mode 2. Set mode" << '\n';
+        std::cout << "1. Query mode    Find more about bus and station." << '\n';
+        std::cout << "2. Set mode    Update the information of bus or station" << '\n';
         std::cout << "press Esc to return." << '\n';
         char input = legalInput(1, 2);
         if(input == '\x1B') break;
@@ -53,39 +54,58 @@ void updateStation(BusStation *busStation) {
 
 void updateBus(SchoolBus *schoolBus, BusStation *busStation) {
     std::cout << "Enter the bus's id: " << '\n';
-    char input = legalInput(1, BUSNUMBER);
-    std::cout << "Choose what funtion you want to use." << '\n';
-    std::cout << "1. pull-out/pull-up 2.the number of passenger on the bus 3.reset the line" << '\n';
-    int id = input - '0' + 1；
-    switch (input) {
-        case '1':
-            std::cout << "Set the bus running? (y/n): " << '\n';
-            char ch = getch();
-            if(ch=='y' || ch=='Y')
-              schoolBus[id].setIsRunning(true);
-            else schoolBus[id].setIsRunning(false);
-            break;
-        case '2':
-            std::cout << "Leave passengers: ";
-            int passengerLef;
-            std::cin >> passengerLef;
-            std::cout <<"Arrival passengers: ";
-            int passengerArr;
-            std::cin >> passengerArr;
-            schoolBus[id].updateEmptySeat(passengerArr - passengerLef);
-            break;
-        case '3':
-            std::cout << "Plz enter the line you want to set: " << '\n';
-            char input = legalInput(1, LINENUMBER);
-            if(!schoolBus[id].setLine(line, busStation) )
-                std::cout << "Fail to reset the line." << '\n';
-                std::cout << "May be due //(to the line) or the running state" << '\n';
-            else {
-                schoolBus[id].setLine(line, busStation);
-                std::cout << "" << '\n';
-            }
+    int id;
+    std::cin >> id;
+    schoolBus[id].printInfo(busStation);
+    std::cout << '\n';
 
-        case '\x1B':
+    while(1){
+        std::cout << "Choose what funtion you want to use." << '\n';
+        std::cout << "1. pull-out/pull-up 2.the number of passenger on the bus 3.reset the line" << '\n';
+        std::cout << "Press Esc to return." << '\n';
+        char input = legalInput(1, 3);
+        if(input == '\x1B')
             break;
+        switch (input) {
+            case '1':
+                runningFun(id, schoolBus);
+                break;
+            case '2':
+                passNumFun(id, schoolBus);
+                break;
+            case '3':
+                lineFun(id, schoolBus, busStation);
+                break;
+        }
+    }
+}
+
+void runningFun(int id, SchoolBus *schoolBus) {
+    std::cout << "Set the bus running? (y/n): " << '\n';
+    char ch = getch();
+    if(ch=='y' || ch=='Y')
+    schoolBus[id].setIsRunning(true);
+    else schoolBus[id].setIsRunning(false);
+}
+
+void passNumFun(int id, SchoolBus *schoolBus) {
+    std::cout << "Leave passengers: ";
+    int passengerLef;
+    std::cin >> passengerLef;
+    std::cout <<"Arrival passengers: ";
+    int passengerArr;
+    std::cin >> passengerArr;
+    schoolBus[id].updateEmptySeat(passengerArr - passengerLef);
+}
+
+void lineFun(int id, SchoolBus *schoolBus, BusStation *busStation) {
+    std::cout << "Plz enter the line you want to set: " << '\n';
+    char line = legalInput(1, LINENUMBER);
+    if(!schoolBus[id].setLine(line - '0', busStation) ) {
+        std::cout << "Fail to reset the line." << '\n';
+        std::cout << "Maybe because the bus is running or the station isn't on this line." << '\n';
+    } else {
+        schoolBus[id].setLine(line, busStation);
+        std::cout << "Succeed in setting the line." << '\n' << '\n';
     }
 }

@@ -12,6 +12,8 @@ int main(int argc, char const *argv[]) {
     Sleep(1000);
     system("cls");
     while(1) {
+        std::cout << "Little white is a quick, convenient and cheap way to travel around the university," << '\n';
+        std::cout << "with plenty of sightseeing opportunities along the way. <^_^>" << '\n' << '\n';
         std::cout << "Hello, Please Choose your user mode?" << '\n';
         std::cout << "(Just enter number is OK)" << '\n';
         std::cout << "1.Passenger mode  2.Controller mode" << '\n';

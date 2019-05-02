@@ -11,6 +11,11 @@ class SchoolBus;
 void controllerMode(BusStation *busStation, SchoolBus *schoolBus);
 void setMode(BusStation *busStation, SchoolBus *schoolBus);
 void updateStation(BusStation *busStation);
-void updateBus(SchoolBus *schoolBus);
+void updateBus(SchoolBus *schoolBus, BusStation *busStation);
+
+void runningFun(int id, SchoolBus *schoolBus);
+void passNumFun(int id, SchoolBus *schoolBus);
+void lineFun(int id, SchoolBus *schoolBus, BusStation *busStation);
+
 
 #endif
