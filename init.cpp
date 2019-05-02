@@ -14,15 +14,15 @@ void init(BusStation *busStation, SchoolBus *schoolBus) {
     busStation[5].setName("College Building", 5);
     busStation[6].setName("North Gate", 6);
 
-    busStation[0].setNext(1, 1, busStation);
-    busStation[1].setNext(1, 3, busStation);
-    busStation[3].setNext(1, 4, busStation);
 
-    busStation[0].setNext(2, 1, busStation);
-    busStation[1].setNext(2, 2, busStation);
-    busStation[1].setNext(2, 2, busStation);
-    busStation[2].setNext(2, 6, busStation);
-    busStation[6].setNext(2, 5, busStation);
+    busStation[0].setNext(0, 1, busStation);
+    busStation[1].setNext(0, 3, busStation);
+    busStation[3].setNext(0, 4, busStation);
+
+    busStation[0].setNext(1, 1, busStation);
+    busStation[1].setNext(1, 2, busStation);
+    busStation[2].setNext(1, 6, busStation);
+    busStation[6].setNext(1, 5, busStation);
 }
 
 char legalInput(int min, int max) {

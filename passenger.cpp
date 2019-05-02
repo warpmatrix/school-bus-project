@@ -19,13 +19,13 @@ void queryMode(const BusStation *busStation, const SchoolBus *schoolBus) {
 
 void inquireRoutes(const BusStation *busStation, const SchoolBus *schoolBus) {
     while(1) {
-        for(int i=1; i<=LINENUMBER; i++)
-          std::cout << "line" << i << ": " << getRoute(i, 0, busStation) << "\n\n";
+        for(int i=0; i<LINENUMBER; i++)
+          std::cout << "line" << i+1 << ": " << getRoute(i, 0, busStation) << "\n\n";
         std::cout << "You can choose a line, for more information." << '\n';
         std::cout << "Press Esc to go back." << '\n';
         char input = legalInput(1, LINENUMBER);
         if(input == '\x1B') break;
-        inquireStations(input-'0', busStation, schoolBus);
+        inquireStations(input-'0'-1, busStation, schoolBus);
     }
 }
 
@@ -39,9 +39,8 @@ void inquireStations(int line, const BusStation *busStation, const SchoolBus *sc
         if(input == '\x1B') break;
 
         int loc = STARTLOC;
-        for(int i=1; i<input-'0'; i++) {
-            loc = busStation[loc].getNext(line);
-        }
+        for(int i=1; i<input-'0'; i++)
+          loc = busStation[loc].getNext(line);
         busStation[loc].printInfo(schoolBus);
     }
 }
@@ -72,11 +71,10 @@ std::string getRoute(int line, int head, const BusStation *busStation) {
 std::string getStationNum(int line, int head, const BusStation *busStation) {
     std::string str;
     int num = 1;
-    for(int p=head; p!=-1; p=busStation[p].getNext(line) ) {
-        if(num == 1)
-          str += std::to_string(num++) + '.' + busStation[p].getName();
-        else str += "<->" + std::to_string(num++) + '.' + busStation[p].getName();
-    }
+    for(int p=head; p!=-1; p=busStation[p].getNext(line) )
+      if(num == 1)
+        str += std::to_string(num++) + '.' + busStation[p].getName();
+      else str += "<->" + std::to_string(num++) + '.' + busStation[p].getName();
     return str;
 }
 

@@ -101,11 +101,12 @@ void passNumFun(int id, SchoolBus *schoolBus) {
 void lineFun(int id, SchoolBus *schoolBus, BusStation *busStation) {
     std::cout << "Plz enter the line you want to set: " << '\n';
     char line = legalInput(1, LINENUMBER);
-    if(!schoolBus[id].setLine(line - '0', busStation) ) {
+    if(!schoolBus[id].setLine(line-'0'-1, busStation) ) {
         std::cout << "Fail to reset the line." << '\n';
         std::cout << "Maybe because the bus is running or the station isn't on this line." << '\n';
-    } else {
-        schoolBus[id].setLine(line, busStation);
+    }
+    else {
+        schoolBus[id].setLine(line-1, busStation);
         std::cout << "Succeed in setting the line." << '\n' << '\n';
     }
 }
