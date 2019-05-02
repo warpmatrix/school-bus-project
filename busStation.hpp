@@ -9,12 +9,13 @@ public:
 
     void setNext(int line, int nextStation, BusStation *busStation);
     void setName(std::string name, int id);
+    void updateWait(int detNum);
 
     std::string getName() const;
     int getNext(int line) const;
     int getWait() const;
 
-    void printInfo(SchoolBus *schoolBus) const;
+    void printInfo(const SchoolBus *schoolBus) const;
 private:
     int id;
     std::string name;

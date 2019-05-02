@@ -8,32 +8,25 @@ int main(int argc, char const *argv[]) {
     BusStation busStation[STATIONNUMBER];
     SchoolBus schoolBus[BUSNUMBER];
     init(busStation, schoolBus);
-    // std::cout << "Produced by nonoli and warpMatrix" << '\n';
-    // Sleep(3000);
-    // system("cls");
+    std::cout << "Produced by nonoli and warpMatrix" << '\n';
+    Sleep(1000);
+    system("cls");
     while(1) {
-        std::cout << "Hello, Please Choose your user mode?(Just enter number is OK)" << '\n';
+        std::cout << "Little white is a quick, convenient and cheap way to travel around the university," << '\n';
+        std::cout << "with plenty of sightseeing opportunities along the way. <^_^>" << '\n' << '\n';
+        std::cout << "Hello, Please Choose your user mode?" << '\n';
+        std::cout << "(Just enter number is OK)" << '\n';
         std::cout << "1.Passenger mode  2.Controller mode" << '\n';
         char input = legalInput(1, 2);
-        if(input == '1')
-          queryMode(busStation, schoolBus);
+        if(input == '\x1B') break;
+        if(input == '1') {
+            queryMode(busStation, schoolBus);
+            break;
+        }
         else {
-            while (1) {
-                if(signIn() ) {
-                    std::cout << "Signing in..." << '\n';
-                    std::cout << '\n';
-                    controllerMode(busStation, schoolBus);
-                }
-                else {
-                    std::cout << '\n' << "Sorry to say that your account or password is wrong." << '\n';
-                    std::cout << "You will return to the main menu if you enter 'Esc'..." << '\n';
-                    std::cout << "Or enter any other key to return to the sign in menu" << '\n';
-                    char input = getch();
-                    system("cls");
-                    if(input == 27) break;
-                }
-            }
-
+            bool permission = false;
+            logInSystem(permission);
+            if(permission) controllerMode(busStation, schoolBus);
         }
     }
     return 0;

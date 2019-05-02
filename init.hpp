@@ -10,9 +10,7 @@
 
 void init();
 char legalInput(int min, int max);
-std::string getRoute(int line);
-std::string getStationNum(int line, int head, BusStation *busStation);
-int getRouteLength(int line, BusStation *busStation);
 bool signIn();
+void logInSystem(bool &permission);
 
 #endif
