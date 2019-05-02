@@ -37,7 +37,12 @@ void inquireStations(int line, const BusStation *busStation, const SchoolBus *sc
         int routeLength = getRouteLength(line, busStation);
         char input = legalInput(1, routeLength);
         if(input == '\x1B') break;
-        busStation[input-'0'-1].printInfo(schoolBus);
+
+        int loc = STARTLOC;
+        for(int i=1; i<input-'0'; i++) {
+            loc = busStation[loc].getNext(line);
+        }
+        busStation[loc].printInfo(schoolBus);
     }
 }
 
