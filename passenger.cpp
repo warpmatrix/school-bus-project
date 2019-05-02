@@ -20,8 +20,8 @@ void queryMode(const BusStation *busStation, const SchoolBus *schoolBus) {
 void inquireRoutes(const BusStation *busStation, const SchoolBus *schoolBus) {
     while(1) {
         for(int i=1; i<=LINENUMBER; i++)
-          std::cout << "line" << i << ": " << getRoute(i, 0, busStation) << '\n';
-        std::cout << "You can choose a route, for more information." << '\n';
+          std::cout << "line" << i << ": " << getRoute(i, 0, busStation) << "\n\n";
+        std::cout << "You can choose a line, for more information." << '\n';
         std::cout << "Press Esc to go back." << '\n';
         char input = legalInput(1, LINENUMBER);
         if(input == '\x1B') break;
@@ -31,7 +31,7 @@ void inquireRoutes(const BusStation *busStation, const SchoolBus *schoolBus) {
 
 void inquireStations(int line, const BusStation *busStation, const SchoolBus *schoolBus) {
     while (1) {
-        std::cout << getStationNum(line, 0, busStation) << '\n';
+        std::cout << getStationNum(line, 0, busStation) << "\n\n";
         std::cout << "Enter the number of the station, for more details." << '\n';
         std::cout << "Press Esc to go back." << '\n';
         int routeLength = getRouteLength(line, busStation);

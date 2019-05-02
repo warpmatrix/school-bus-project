@@ -4,8 +4,8 @@
 
 void controllerMode(BusStation *busStation, SchoolBus *schoolBus) {
     while (1) {
-        std::cout << "1. Query mode    Find more about bus and station." << '\n';
-        std::cout << "2. Set mode    Update the information of bus or station" << '\n';
+        std::cout << "1. Query mode\tFind more about bus and station." << '\n';
+        std::cout << "2. Set mode\tUpdate the information of bus or station" << '\n';
         std::cout << "press Esc to return." << '\n';
         char input = legalInput(1, 2);
         if(input == '\x1B') break;

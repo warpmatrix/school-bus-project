@@ -32,6 +32,7 @@ int BusStation::getWait() const {
 }
 
 void BusStation::printInfo(const SchoolBus *schoolBus) const {
+    std::cout << "The station: " << name << '\n';
     std::cout << "The number of waiting passenger: " << waitingPass << '\n';
     int countComingBus = 0;
     int countWaitingBus = 0;
