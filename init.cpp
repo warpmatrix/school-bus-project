@@ -10,7 +10,7 @@ void init(BusStation *busStation, SchoolBus *schoolBus) {
     busStation[1].setName("South Lab", 1);
     busStation[2].setName("North Lab", 2);
     busStation[3].setName("Library", 3);
-    busStation[4].setName("teaching Building", 4);
+    busStation[4].setName("Teaching Building", 4);
     busStation[5].setName("College Building", 5);
     busStation[6].setName("North Gate", 6);
 
@@ -41,7 +41,7 @@ char legalInput(int min, int max) {
 
 bool signIn() {
     std::string account="admin";
-    std::string password="abc";
+    std::string password="password";
     std::cout << "Account: ";
     std::string userAccount;
     std::cin >> userAccount;

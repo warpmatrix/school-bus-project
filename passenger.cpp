@@ -6,7 +6,7 @@ void queryMode(const BusStation *busStation, const SchoolBus *schoolBus) {
     std::cout << "Entering query mode..." << '\n';
     std::cout << '\n';
     while(1) {
-        std::cout << "1.You can inquire the school buses route." << '\n';
+        std::cout << "1.You can inquire the school buses routes." << '\n';
         std::cout << "2.You can also inquire more information by entering the school bus's id." << '\n';
         std::cout << "Press Esc to quit the inquire mode." << '\n';
         char input = legalInput(1, 2);
@@ -45,10 +45,14 @@ void inquireBuses(const BusStation *busStation, const SchoolBus *schoolBus) {
     while (1) {
         std::cout << "Plz enter the school bus's id(1~"
         << BUSNUMBER << "), for more information." << '\n';
-        std::cout << "Press Esc to go back." << '\n';
-        int input = legalInput(1, BUSNUMBER);
+        int id;
+        std::cin >> id;
+        schoolBus[ id-1 ].printInfo(busStation);
+        std::cout << '\n' << "You will return to the higher menu if you enter 'Esc'..." << '\n';
+        std::cout << "Or enter any other key to inquire other school bus," << '\n';
+        char input = getch();
+        system("cls");
         if(input == '\x1B') break;
-        schoolBus[input-'0'-1].printInfo(busStation);
     }
 }
 

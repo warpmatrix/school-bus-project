@@ -34,7 +34,7 @@ void SchoolBus::setId(int id) {
 }
 
 void SchoolBus::printInfo(const BusStation *busStation) const {
-    std::cout << "The line " << line << " bus you inquire is ";
+    std::cout << "The line " << line << " bus(id=" << id+1 << ") you inquire is ";
     if(isRunning) {
         std::cout << "runing to "
             << busStation[location].getName() << ".\n";
@@ -43,5 +43,5 @@ void SchoolBus::printInfo(const BusStation *busStation) const {
         std::cout << "waiting for you in "
             << busStation[location].getName() << ".\n";
     }
-    std::cout << "The empty seat: " << emptySeat << '\n';
+    std::cout << "There are " << emptySeat << " empty seat on the bus."<< '\n';
 }

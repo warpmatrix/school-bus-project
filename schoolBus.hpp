@@ -9,9 +9,7 @@ class BusStation;
 class SchoolBus {
 public:
     SchoolBus();
-    // int getId() const;
     int getLocation() const;
-    // int getEmptySeat() const;
     bool getIsRunning() const;
     void printInfo(const BusStation *busStation) const;
     void setId(int id);
