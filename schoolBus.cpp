@@ -5,7 +5,7 @@ SchoolBus::SchoolBus() {
     emptySeat = SUMSEAT;
     isRunning = false;
     location = STARTLOC;
-    line = 1;
+    line = 0;
 }
 
 int SchoolBus::getLocation() const {
@@ -34,14 +34,11 @@ void SchoolBus::setId(int id) {
 }
 
 void SchoolBus::printInfo(const BusStation *busStation) const {
-    std::cout << "The line " << line << " bus(id=" << id+1 << ") you inquire is ";
-    if(isRunning) {
-        std::cout << "runing to "
-            << busStation[location].getName() << ".\n";
-    }
-    else {
-        std::cout << "waiting for you in "
-            << busStation[location].getName() << ".\n";
-    }
+    std::cout << "The line " << line+1 << " bus(id=" << id+1 << ") you inquire is ";
+    if(isRunning)
+      std::cout << "runing to "
+        << busStation[location].getName() << ".\n";
+    else std::cout << "waiting for you in "
+        << busStation[location].getName() << ".\n";
     std::cout << "There are " << emptySeat << " empty seat on the bus."<< '\n';
 }

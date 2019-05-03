@@ -3,7 +3,7 @@
 
 BusStation::BusStation() {
     waitingPass = 0;
-    for(int i=1; i<=LINENUMBER; i++){
+    for(int i=0; i<LINENUMBER; i++){
         next[i] = -1;
         prev[i] = -1;
     }
@@ -37,10 +37,11 @@ void BusStation::printInfo(const SchoolBus *schoolBus) const {
     int countComingBus = 0;
     int countWaitingBus = 0;
     for(int i=0; i<=BUSNUMBER; i++)
-      if(schoolBus[i].getLocation()==id)
+      if(schoolBus[i].getLocation()==id) {
         if(schoolBus[i].getIsRunning()==true)
           countComingBus++;
         else countWaitingBus++;
+    }
     std::cout << countWaitingBus << " buses is on the station." << '\n';
     std::cout << "There are " << countComingBus << " buses on the way." << '\n' << '\n';
 }
