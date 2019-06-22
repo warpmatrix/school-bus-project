@@ -1,8 +1,5 @@
 Created by nonoli and warpMatrix in 4/2019
-Copyright © 2019 by 李赞辉 and 梁允楷. All Rights Reserved.
-
-School-Bus-Project
-项目合作完成者: 李赞辉（18342053） 梁允楷（18342055）
+Copyright © 2019 by Leezanhui and warpMatrix. All Rights Reserved.
 
 程序说明
 1.  本程序主要用于方便中大师生使用中山大学校园巴士，拥有十分友好的用户提示。
